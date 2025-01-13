@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddOfficeSpaceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/TComplexOfficeRental";
+	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/TComplexOfficeRental-1.0-SNAPSHOT?useUnicode=true&characterEncoding=UTF-8";
 	private static final String JDBC_USER = "root";
 	private static final String JDBC_PASS = "Qazqaz123.";
 
@@ -29,6 +31,13 @@ public class AddOfficeSpaceServlet extends HttpServlet {
 		String startDate = request.getParameter("start_date");
 		String endDate = request.getParameter("end_date");
 		String description = request.getParameter("description");
+
+		String[] validStatuses = {"Trống", "Hạ tầng", "Đầy đủ"};
+		if (!Arrays.asList(validStatuses).contains(status)) {
+			response.getWriter().println("Invalid status value.");
+			response.getWriter().println("Received status: " + status);
+			return;
+		}
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -68,5 +77,9 @@ public class AddOfficeSpaceServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().println("Please use the POST method to submit data.");
+	}
+
+	private boolean isValidStatus(String status) {
+		return "Trống".equals(status) || "Hạ tầng".equals(status) || "Đầy đủ".equals(status);
 	}
 }
