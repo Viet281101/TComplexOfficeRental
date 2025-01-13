@@ -65,4 +65,8 @@ public class AddOfficeSpaceServlet extends HttpServlet {
 			}
 		}
 	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().println("Please use the POST method to submit data.");
+	}
 }
