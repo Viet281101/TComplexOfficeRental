@@ -1,7 +1,7 @@
 # Variables
 MVN=mvn
 TOMCAT_HOME=/opt/tomcat9
-WAR_FILE=target/TComplexOfficeRental.war
+WAR_FILE=target/TComplexOfficeRental-1.0-SNAPSHOT.war
 DEPLOY_DIR=$(TOMCAT_HOME)/webapps
 DB_SETUP_SCRIPT=db/setup.sql
 

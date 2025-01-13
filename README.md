@@ -2,6 +2,8 @@
 
 This project is a web application for managing office rentals at the TComplex building. Below are the details of the commands available in the `Makefile` to facilitate the development, testing, and deployment of the project.
 
+Link debug: http://localhost:8080/TComplexOfficeRental-1.0-SNAPSHOT/
+
 ## Available Commands
 
 ### `make clean`
