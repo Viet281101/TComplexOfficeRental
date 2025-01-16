@@ -6,6 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Search Office Spaces</title>
 	<link rel="stylesheet" href="css/style.css">
+	<script>
+		function confirmDelete(code) {
+			console.log(code);
+			if (confirm(`Are you sure you want to delete the office space with code ${code}?`)) {
+				window.location.href = `DeleteOfficeSpaceServlet?code=${code}`;
+			}
+		}
+	</script>
 </head>
 <body>
 	<h1>Search Office Spaces</h1>
@@ -39,6 +47,7 @@
 			<th>Start Date</th>
 			<th>End Date</th>
 			<th>Description</th>
+			<th>Actions</th>
 		</tr>
 		<%
 			try {
@@ -60,6 +69,9 @@
 			<td><%= rs.getDate("start_date") %></td>
 			<td><%= rs.getDate("end_date") %></td>
 			<td><%= rs.getString("description") %></td>
+			<td>
+				<button type="button" onclick="confirmDelete('<%= rs.getString("code") %>')">Delete</button>
+			</td>
 		</tr>
 		<%
 				}

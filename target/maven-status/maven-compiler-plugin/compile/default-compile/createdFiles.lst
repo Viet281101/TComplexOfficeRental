@@ -1,2 +1,3 @@
 com/example/servlet/AddOfficeSpaceServlet.class
 com/example/servlet/SearchOfficeSpaceServlet.class
+com/example/servlet/DeleteOfficeSpaceServlet.class
