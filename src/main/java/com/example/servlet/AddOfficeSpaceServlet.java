@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -39,9 +38,9 @@ public class AddOfficeSpaceServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
 
-			String insertSql = "INSERT INTO office_space (code, area, status, floor, type, rent_price, start_date, end_date, description) "
+			String sql = "INSERT INTO office_space (code, area, status, floor, type, rent_price, start_date, end_date, description) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			stmt = conn.prepareStatement(insertSql);
+			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, code);
 			stmt.setDouble(2, Double.parseDouble(area));
 			stmt.setString(3, status);
@@ -53,29 +52,11 @@ public class AddOfficeSpaceServlet extends HttpServlet {
 			stmt.setString(9, description);
 			stmt.executeUpdate();
 
-			String selectSql = "SELECT * FROM office_space";
-			stmt = conn.prepareStatement(selectSql);
-			ResultSet rs = stmt.executeQuery();
-
 			response.setContentType("text/html");
-			response.getWriter().println("<h1>Office Spaces</h1>");
-			response.getWriter().println("<table border='1'>");
-			response.getWriter().println("<tr><th>ID</th><th>Code</th><th>Area</th><th>Status</th><th>Floor</th><th>Type</th><th>Rent Price</th><th>Start Date</th><th>End Date</th><th>Description</th></tr>");
-			while (rs.next()) {
-				response.getWriter().println("<tr>");
-				response.getWriter().println("<td>" + rs.getInt("id") + "</td>");
-				response.getWriter().println("<td>" + rs.getString("code") + "</td>");
-				response.getWriter().println("<td>" + rs.getDouble("area") + "</td>");
-				response.getWriter().println("<td>" + rs.getString("status") + "</td>");
-				response.getWriter().println("<td>" + rs.getInt("floor") + "</td>");
-				response.getWriter().println("<td>" + rs.getString("type") + "</td>");
-				response.getWriter().println("<td>" + rs.getDouble("rent_price") + "</td>");
-				response.getWriter().println("<td>" + rs.getDate("start_date") + "</td>");
-				response.getWriter().println("<td>" + rs.getDate("end_date") + "</td>");
-				response.getWriter().println("<td>" + rs.getString("description") + "</td>");
-				response.getWriter().println("</tr>");
-			}
-			response.getWriter().println("</table>");
+			response.getWriter().println("<script>");
+			response.getWriter().println("alert('New office space added successfully!');");
+			response.getWriter().println("window.location.href = 'search_office_space.jsp';");
+			response.getWriter().println("</script>");
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

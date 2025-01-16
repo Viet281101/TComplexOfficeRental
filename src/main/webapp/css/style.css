@@ -42,3 +42,46 @@ button {
 button:hover {
 	background-color: #45a049;
 }
+
+/* Table styles */
+table {
+	width: 90%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+
+table th, table td {
+	padding: 12px 15px;
+	text-align: center;
+	border: 1px solid #ddd;
+	font-size: 1rem;
+}
+
+table th {
+	background-color: #4CAF50;
+	color: white;
+	font-weight: bold;
+}
+
+table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+table tr:hover {
+	background-color: #f1f1f1;
+}
+
+table td {
+	color: #333;
+	vertical-align: middle;
+}
+
+table caption {
+	margin-bottom: 10px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+}
