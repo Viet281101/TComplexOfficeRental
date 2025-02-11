@@ -33,7 +33,7 @@
 		
 		<button type="submit">Search</button>
 	</form>
-	
+
 	<h2>Current Office Spaces</h2>
 	<table border="1">
 		<tr>
@@ -74,7 +74,7 @@
 			</td>
 		</tr>
 		<%
-				}
+			}
 				conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();

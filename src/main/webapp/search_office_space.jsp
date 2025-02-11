@@ -24,16 +24,16 @@
 			<option value="Shared Office">Shared Office</option>
 			<option value="Private Office">Private Office</option>
 		</select>
-		
+
 		<label for="rentPrice">Rent Price (less than):</label>
 		<input type="number" id="rentPrice" name="rentPrice" min="0" step="0.01">
-		
+
 		<label for="floor">Floor:</label>
 		<input type="number" id="floor" name="floor" min="1" max="15">
-		
+
 		<button type="submit">Search</button>
 	</form>
-	
+
 	<h2>Current Office Spaces</h2>
 	<table border="1">
 		<tr>
@@ -74,7 +74,7 @@
 			</td>
 		</tr>
 		<%
-				}
+			}
 				conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
